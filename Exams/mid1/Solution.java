@@ -1,9 +1,9 @@
 import java.util.Scanner;
+import java.util.Arrays;
 /**
- * Write a java program to round the
- * elements of a matrix to the nearest 100.
- *
- * @author : 
+ * Write a java program to replace each element
+ *  of the given char array that matches the given
+ *  character with the given replacement.
  */
 final class Solution {
     /**
@@ -13,32 +13,28 @@ final class Solution {
         //not used
     }
     /**
-     * Function to round the
-     * elements of a matrix to the nearest 100.
+     * Function to replace each element
+     *  of the given char array that matches the given
+     *  character with the given replacement.
      *
-     * @param      a     Matrix of which the elements to be rounded
-     * @param      rows     Number of rows
-     * @param      columns     Number of columns
+     * @param      charArray  The character array
+     * @param      oldChar    The old character
+     * @param      newChar    The new character
      *
-     * @return     Matrix of the rounded elements
+     * @return     new character array with replaced characters
      */
-    static int[][] roundHundred(final int[][] a, final int rows, final int columns) {
-
-	// write ypur code here
-    	int resultMatrix[][] = new int[rows][columns];
-    	for(int i=0;i<rows;i++){
-    		for(int j = 0;j<columns;j++){
-    			if(a[i][j] % 100 >= 50){
-    				int temp = ((a[i][j]/100)+1)*100;
-    				resultMatrix[i][j] = temp;
-    			}
-    			else{
-    				int temp = ((a[i][j])/100)*100;
-    				resultMatrix[i][j] = temp;
-    			}
-    		}
-    	}
-		return resultMatrix;
+    static char[] replaceAll(final char[] charArray,
+        final char oldChar, final char newChar) {
+	// write your code here
+        char[] resultArray = new char[charArray.length];
+        for(int i=0;i<charArray.length;i++)
+        {
+            if(charArray[i] == oldChar)
+                resultArray[i] =  newChar;
+            else
+                resultArray[i] = charArray[i];
+        }
+        return resultArray;
     }
     /**
      * Main function.
@@ -47,20 +43,14 @@ final class Solution {
      */
     public static void main(final String[] args) {
         Scanner scan = new Scanner(System.in);
-        int m = scan.nextInt();
         int n = scan.nextInt();
-        int[][] a = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                a[i][j] = scan.nextInt();
-            }
+        char[] charArray = new char[n];
+        for (int i = 0; i < n; i++) {
+            charArray[i] = scan.next().charAt(0);
         }
-        int[][] b = roundHundred(a, m, n);
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n - 1; j++) {
-                System.out.print(b[i][j] + " ");
-            }
-            System.out.println(b[i][n - 1]);
-        }
+        char oldChar = scan.next().charAt(0);
+        char newChar = scan.next().charAt(0);
+        char[] newCharArray = replaceAll(charArray, oldChar, newChar);
+        System.out.println(Arrays.toString(newCharArray));
     }
 }
