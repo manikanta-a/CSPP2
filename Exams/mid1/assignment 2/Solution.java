@@ -29,16 +29,16 @@ final class Solution {
     	for(int i=0;i<rows;i++){
     		for(int j = 0;j<columns;j++){
     			if(a[i][j] % 100 >= 50){
-    				int temp = (a[i][j]+1)*100;
-    				a[i][j] = temp;
+    				int temp = ((a[i][j]/100)+1)*100;
+    				resultMatrix[i][j] = temp;
     			}
     			else{
-    				int temp = (a[i][j])*100;
-    				a[i][j] = temp;
+    				int temp = ((a[i][j])/100)*100;
+    				resultMatrix[i][j] = temp;
     			}
     		}
     	}
-	
+		return resultMatrix;
     }
     /**
      * Main function.
